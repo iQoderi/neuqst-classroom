@@ -14,19 +14,17 @@ module.exports = app => {
         }
 
         async login(ctx) {
-            const { email, password } = ctx.request.body;
-            const query = {
-                email,
-                password,
-            };
-            console.log('called2');
-            const result = await ctx.service.auth.login(query);
-            ctx.body = {
-                code: 0,
-                data: {
-                    msg: 'success',
-                },
-            };
+            const { password } = ctx.request.body;
+            const { user } = ctx.state;
+            if (password !== user.password) {
+                ctx.body = {
+                    code: 10003,
+                };
+            } else {
+                ctx.body = {
+                    code: 0,
+                };
+            }
         }
 
         async forgetPass(ctx) {

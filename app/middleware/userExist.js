@@ -12,7 +12,8 @@ module.exports = opt => {
         const result = await ctx.service.auth.userExist(qs);
 
         if ((result === null && flag === 0) || (result !== null && flag === 1)) {
-            return await next;
+            ctx.state.user = result;
+            return await next();
         }
 
         return ctx.body = { code: codeMap[flag] };
