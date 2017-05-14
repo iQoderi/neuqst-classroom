@@ -18,5 +18,18 @@ module.exports = appInfo => {
         app: true,
         agent: false,
     };
+
+    config.email = {
+        client: {
+            host: 'smtp.163.com',
+            secureConnection: true,
+            port: 465,
+            auth: {
+                user: 'neuqstbysgl@163.com',
+                pass: 'neuqst1314',
+            }
+        }
+    };
+
     return config;
 };
