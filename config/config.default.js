@@ -5,7 +5,7 @@ module.exports = appInfo => {
 
   // should change to your own
   config.keys = appInfo.name + '_1494245470526_4357';
-  // config.middleware =  ['errorHandler'];
+  config.middleware =  ['userExist'];
   return config;
 };
 

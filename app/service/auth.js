@@ -2,8 +2,8 @@
 
 module.exports = app => {
     class AuthService extends app.Service {
-        async userExist (id) {
-            const result = await this.app.mysql.query('user',{ id });
+        async userExist (opt) {
+            const result = await this.app.mysql.query('user', opt);
             return result;
         }
 
