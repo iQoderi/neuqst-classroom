@@ -19,6 +19,7 @@ module.exports = app => {
                 email,
                 password,
             };
+            console.log('called2');
             const result = await ctx.service.auth.login(query);
             ctx.body = {
                 code: 0,

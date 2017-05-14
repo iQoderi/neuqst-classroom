@@ -3,7 +3,7 @@
 module.exports = app => {
     class AuthService extends app.Service {
         async userExist (opt) {
-            const result = await this.app.mysql.query('user', opt);
+            const result = await this.app.mysql.get('user', opt);
             return result;
         }
 

@@ -1,9 +1,10 @@
 "use strict";
 
+const userExist = require('../middleware/userExist');
+
 module.exports = app => {
-    const userExist = app.middlewares.userExist({ flag: 0 });
-    app.post('/auth/register', userExist, 'auth.register');
-    app.post('/auth/login', 'auth.login');
+    app.post('/auth/register', userExist({ flag: 0 }), 'auth.register');
+    app.post('/auth/login', userExist({ flag: 1 }), 'auth.login');
     app.post('/auth/forgetPass', 'auth.forgetPass');
     app.post('/auth/updatePass', 'auth.updatePass');
 };
