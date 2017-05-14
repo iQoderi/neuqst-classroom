@@ -1,4 +1,5 @@
 "use strict";
+
 module.exports = app => {
     const fs = require('fs');
     const path = require('path');
@@ -9,6 +10,7 @@ module.exports = app => {
         const routerPath = `${routerDir}/${file}`;
         const router = require(routerPath);
         if (typeof router === 'function') {
+            console.log(`router loaded: ${router}`);
             router(app);
         }
     });

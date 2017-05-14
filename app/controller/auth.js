@@ -1,28 +1,31 @@
 "use strict";
 
 module.exports = app => {
-  class AuthController extends app.Controller {
-      async registry(cxt) {
-          cxt.body = {
-              code: 0,
-              data: {
-                  msg: 'success'
-              }
-          };
-      }
+    class AuthController extends app.Controller {
+        async register(ctx) {
+            const { body } = ctx.request;
+            const result = await ctx.service.auth.register(body);
+            ctx.body = {
+                code: 0,
+                data: {
+                    msg: 'success'
+                }
+            };
+        }
 
-      async login(cxt) {
-          cxt.body = 'login';
-      }
+        async login(ctx) {
+            console.log('called');
+            ctx.body = 'login';
+        }
 
-      async forgetPass(cxt) {
-          cxt.body = 'forgetPass';
-      }
+        async forgetPass(ctx) {
+            ctx.body = 'forgetPass';
+        }
 
-      async updatePass(cxt) {
-          cxt.body = 'updatePass';
-      }
-  }
+        async updatePass(ctx) {
+            ctx.body = 'updatePass';
+        }
+    }
 
-  return AuthController;
+    return AuthController;
 };

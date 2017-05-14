@@ -1,4 +1,15 @@
 'use strict';
 
-// had enabled by egg
-// exports.static = true;
+const plugins = {};
+
+plugins.mysql = {
+    enable: true,
+    package: 'egg-mysql'
+};
+
+plugins.validate = {
+    enable: true,
+    package: 'egg-validate',
+};
+
+module.exports = plugins;
