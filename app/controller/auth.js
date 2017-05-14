@@ -14,8 +14,18 @@ module.exports = app => {
         }
 
         async login(ctx) {
-            console.log('called');
-            ctx.body = 'login';
+            const { email, password } = ctx.request.body;
+            const query = {
+                email,
+                password,
+            };
+            const result = await ctx.service.auth.login(query);
+            ctx.body = {
+                code: 0,
+                data: {
+                    msg: 'success',
+                },
+            };
         }
 
         async forgetPass(ctx) {

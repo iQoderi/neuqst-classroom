@@ -6,6 +6,11 @@ module.exports = app => {
             const result = await this.app.mysql.insert('user', user);
             return result;
         }
+
+        async login(query) {
+            const result = await this.app.mysql.select('user', query);
+            return result;
+        }
     }
 
     return AuthService;
