@@ -4,6 +4,7 @@ module.exports = app => {
     class AuthController extends app.Controller {
         async register(ctx) {
             const { body } = ctx.request;
+            body.password =await app.auth.encrypt(body.password);
             const result = await ctx.service.auth.register(body);
             ctx.body = {
                 code: 0,

@@ -24,7 +24,7 @@ module.exports = appInfo => {
                 auth: {
                     user: 'neuqstbysgl@163.com',
                     pass: 'neuqst1314',
-                }
+                },
             },
             app: true,
             agent: false,
@@ -34,7 +34,7 @@ module.exports = appInfo => {
                 saltTime: 10,
             },
             session: {
-                secrets: 'neuqst-classroom0000222333798'
+                secrets: 'neuqst-classroom0000222333798',
             },
             app: true,
             agent: false,

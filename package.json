@@ -7,7 +7,7 @@
     "bcrypt": "^1.0.2",
     "bluebird": "^3.5.0",
     "egg": "^1.1.0",
-    "egg-auth": "^1.0.0",
+    "egg-auth": "^1.1.2",
     "egg-email": "^1.0.2",
     "egg-mysql": "^3.0.0",
     "egg-validate": "^1.0.0",
