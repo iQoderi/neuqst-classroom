@@ -1,20 +1,22 @@
 'use strict';
 
-const plugins = {};
-
-plugins.mysql = {
-    enable: true,
-    package: 'egg-mysql'
-};
-
-plugins.validate = {
-    enable: true,
-    package: 'egg-validate',
-};
-
-plugins.email = {
-    enable: true,
-    package: 'egg-email',
+const plugins = {
+    mysql: {
+        enable: true,
+        package: 'egg-mysql',
+    },
+    validate: {
+        enable: true,
+        package: 'egg-validate',
+    },
+    email: {
+        enable: true,
+        package: 'egg-email',
+    },
+    auth: {
+        enable: true,
+        package: 'egg-auth',
+    }
 };
 
 module.exports = plugins;
