@@ -11,7 +11,7 @@ module.exports = opt => {
         const qs = { email };
         const result = await ctx.service.auth.userExist(qs);
 
-        if ((result === null && flag === 0) || (result !== null && flag === 1)) {
+        if ((result === null && flag === 1) || (result !== null && flag === 0)) {
             ctx.state.user = result;
             return await next();
         }
