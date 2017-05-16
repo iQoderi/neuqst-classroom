@@ -1,7 +1,7 @@
 "use strict";
 
 
-exports.genActiveTpl = (who, link) => {
+exports.activeMailTpl = (who, link) => {
     const regHtml=`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +58,7 @@ exports.genActiveTpl = (who, link) => {
     return regHtml;
 };
 
-exports.resetPassTpl = (who, link) => {
+exports.resetPassMailTpl = (who, link) => {
     const regHtml=`<!DOCTYPE html>
 <html lang="en">
 <head>

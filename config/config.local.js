@@ -26,6 +26,8 @@ module.exports = appInfo => {
                     pass: 'neuqst1314',
                 },
             },
+            from: 'neuqstbysgl@163.com',
+            name: '东北大学秦皇岛分校数统教室管理系统',
             app: true,
             agent: false,
         },
@@ -38,7 +40,8 @@ module.exports = appInfo => {
             },
             app: true,
             agent: false,
-        }
+        },
+        host: 'http://localhost:7001'
     };
 
     return config;

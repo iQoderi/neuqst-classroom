@@ -4,6 +4,7 @@
   "description": "东北大学秦皇岛分校数学与统计学院教室管理系统",
   "private": true,
   "dependencies": {
+    "async": "^2.4.0",
     "bcrypt": "^1.0.2",
     "bluebird": "^3.5.0",
     "egg": "^1.1.0",
