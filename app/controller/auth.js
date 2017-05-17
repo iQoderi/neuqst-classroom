@@ -38,9 +38,9 @@ module.exports = app => {
                     code: 10006,
                 };
             }
-            const { email: saveEmail, password, id } = user;
+            const { email: savedEmail, password, id } = user;
             const { secrets } = ctx.app.config.auth.session;
-            if (_id !== saveEmail + password + secrets ) {
+            if (_id !== savedEmail + password + secrets ) {
                 return ctx.body = {
                     code: 10007,
                 }
@@ -58,16 +58,29 @@ module.exports = app => {
         }
 
         async login(ctx) {
-            const { password } = ctx.request.body;
+            const { password, savePass } = ctx.request.body;
             const { user } = ctx.state;
-            if (password !== user.password) {
-                ctx.body = {
-                    code: 10003,
+            const { password:hashPass, isActive } = user;
+            const { validate } = ctx.app.auth;
+            const isSame = await validate(password, hashPass);
+            if (!isSame) {
+                return ctx.body = {
+                  code: 10011,
                 };
-            } else {
-                ctx.body = {
-                    code: 0,
+            }
+            if (isActive !== 1) {
+                return ctx.body = {
+                    code: 10010,
                 };
+            }
+
+            const token = ctx.app.auth.signToken(user.id);
+            await ctx.service.auth.saveToken(user.id, token);
+            return ctx.body = {
+                code: 0,
+                data: {
+                    token,
+                }
             }
         }
 

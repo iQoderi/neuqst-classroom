@@ -18,6 +18,15 @@ module.exports = app => {
             return result;
         }
 
+        async saveToken(uid, token) {
+            const row = {
+                id: uid,
+                token,
+            };
+            const result = await this.app.mysql.update('user', row);
+
+            return result;
+        }
     }
 
     return AuthService;

@@ -32,6 +32,14 @@ module.exports = app => {
 
             return result;
         }
+
+        async checkActiveByMail (email) {
+            const result = await this.app.mysql.get('user', { email });
+            const isActive = result.isActive === 1;
+
+            return isActive;
+        }
+
     }
 
     return UserService;
