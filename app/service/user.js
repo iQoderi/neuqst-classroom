@@ -29,6 +29,25 @@ module.exports = app => {
             return result;
         }
 
+        async findUserByMailAndKey(email, retrieveKey) {
+            const query = {
+                email,
+                retrieveKey,
+            };
+            const result = await this.app.mysql.get('user', query);
+
+            return result;
+        }
+
+        async updatePass(uid, password) {
+            const row = {
+                id: uid,
+                password,
+            };
+            const result = await this.app.mysql.update('user', row);
+            return result.affectedRows === 1;
+        }
+
         async checkActiveByMail (email) {
             const result = await this.app.mysql.get('user', { email });
             const isActive = result.isActive === 1;

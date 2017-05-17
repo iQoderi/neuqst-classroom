@@ -120,6 +120,35 @@ module.exports = app => {
             }
         }
 
+        async resetPass(ctx) {
+            const { _id, exp } = ctx.state.user;
+            const { query: { access_token, email }, body: { password } } = ctx.request;
+            const now = Date.now();
+            if (now > exp * 1000) {
+                return ctx.body = {
+                    code: 10005,
+                };
+            }
+            const user = await ctx.service.user.findUserByMailAndKey(email, access_token);
+            if (!user) {
+                return ctx.body = {
+                    code: 10005,
+                }
+            }
+            const hashPass = await ctx.app.auth.encrypt(password);
+            const isSuccess = await ctx.service.user.updatePass(user.id, hashPass);
+            if (isSuccess) {
+                await ctx.service.user.setUserRetrieveKey(user.id, hashPass);
+                return ctx.body = {
+                    code: 0,
+                };
+            }
+
+            return ctx.body = {
+                code: 10014,
+            }
+        }
+
         async updatePass(ctx) {
             ctx.body = 'updatePass';
         }
