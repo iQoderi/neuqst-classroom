@@ -9,4 +9,5 @@ module.exports = app => {
     app.post('/auth/forgetPass', 'auth.forgetPass');
     app.post('/auth/updatePass', 'auth.updatePass');
     app.get('/auth/active', app.auth.decodedToken, 'auth.activeAccount');
+    app.post('/auth/reactive', userExist({ flag: 0 }), 'auth.reActive');
 };

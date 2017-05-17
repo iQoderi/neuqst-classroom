@@ -6,12 +6,10 @@ const { sendActiveMail, sendResetPassMail } = require('../lib/mail');
  * 发送激活邮件
  */
 exports.sendActiveMail = async (ctx, next) => {
-    const { email, name, password } = ctx.state.user;
+    const { email, name } = ctx.state.user;
     const { signToken } = ctx.app.auth;
-    const hashPass = await ctx.app.auth.encrypt(password);
-    ctx.state.user.password = hashPass;
     const { auth: { session: { secrets } } } = ctx.app.config;
-    const token = signToken(email + hashPass + secrets, '2h');
+    const token = signToken(email + secrets, '2h');
     sendActiveMail.call(ctx, email, token, name);
     await next();
 };
