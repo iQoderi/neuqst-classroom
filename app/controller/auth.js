@@ -84,6 +84,7 @@ module.exports = app => {
                 code: 0,
                 data: {
                     token,
+                    role: user.role,
                 }
             }
         }
