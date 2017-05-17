@@ -35,7 +35,8 @@ exports.sendMail = sendMail;
  * @param {String} name 接收人用户名
  */
 exports.sendActiveMail =function(who, token, name) {
-    const { email, host } = this.config;
+    console.log(this, 'called');
+    const { email, host } = this.app.config;
     const from = `${email.name} < ${email.from} >`;
     const to = who;
     const subject = `${email.name} 账号激活`;
@@ -56,7 +57,7 @@ exports.sendActiveMail =function(who, token, name) {
  * @param {String} name 接收人用户名
  */
 exports.sendResetPassMail = function (who, token, name) {
-    const { email, host } = this.config;
+    const { email, host } = this.app.config;
     const from = `${email.name} < ${email.from} >`;
     const to = who;
     const subject = `${email.name} 账号激活`;

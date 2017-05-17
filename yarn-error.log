@@ -1,0 +1,74 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add uuid --save
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  0.23.4
+
+Node version: 
+  7.10.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "neuqst-classroom",
+    "version": "1.0.0",
+    "description": "东北大学秦皇岛分校数学与统计学院教室管理系统",
+    "private": true,
+    "dependencies": {
+      "async": "^2.4.0",
+      "bcrypt": "^1.0.2",
+      "bluebird": "^3.5.0",
+      "egg": "^1.1.0",
+      "egg-auth": "^1.1.2",
+      "egg-email": "^1.0.2",
+      "egg-mysql": "^3.0.0",
+      "egg-validate": "^1.0.0",
+      "fs": "^0.0.1-security",
+      "path": "^0.12.7"
+    },
+    "devDependencies": {
+      "autod": "^2.8.0",
+      "egg-bin": "^3.3.0",
+      "egg-ci": "^1.6.0",
+      "egg-mock": "^3.4.0",
+      "eslint": "^3.19.0",
+      "eslint-config-egg": "^3.2.0",
+      "webstorm-disable-index": "^1.1.2"
+    },
+    "engines": {
+      "node": ">=6.0.0"
+    },
+    "scripts": {
+      "start": "node index.js",
+      "dev": "egg-bin dev",
+      "test": "npm run lint -- --fix && npm run test-local",
+      "test-local": "egg-bin test",
+      "cov": "egg-bin cov",
+      "lint": "eslint .",
+      "ci": "npm run lint && npm run cov",
+      "autod": "autod"
+    },
+    "ci": {
+      "version": "6"
+    },
+    "repository": {
+      "type": "git",
+      "url": ""
+    },
+    "author": "Qoder",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: EEXIST: file already exists, mkdir '/Users/qoder/webApplication/neuqst-classroom/node_modules/acorn-jsx'

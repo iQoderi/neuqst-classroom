@@ -6,6 +6,7 @@ module.exports = app => {
             const { body } = ctx.request;
             body.password =await app.auth.encrypt(body.password);
             const result = await ctx.service.auth.register(body);
+            console.log(result, 'called');
             ctx.body = {
                 code: 0,
                 data: {
