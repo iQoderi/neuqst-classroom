@@ -8,6 +8,11 @@ module.exports = app => {
             return result;
         }
 
+        async findUserById(uid) {
+            const result = await this.app.mysql.get('user', { id: uid });
+            return result;
+        }
+
         async setUserRetrieveKey(uid, key) {
             const retrieveKey  = key;
             const row = {
