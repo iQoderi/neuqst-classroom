@@ -11,7 +11,7 @@ exports.sendActiveMail = async (ctx, next) => {
     const { auth: { session: { secrets } } } = ctx.app.config;
     const token = signToken(email + password + secrets);
     sendActiveMail.call(ctx, email, token, name);
-    next();
+    await next();
 };
 
 

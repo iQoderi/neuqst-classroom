@@ -35,13 +35,12 @@ exports.sendMail = sendMail;
  * @param {String} name 接收人用户名
  */
 exports.sendActiveMail =function(who, token, name) {
-    console.log(this, 'called');
     const { email, host } = this.app.config;
-    const from = `${email.name} < ${email.from} >`;
+    const from = `${email.name}< ${email.from} >`;
     const to = who;
     const subject = `${email.name} 账号激活`;
     const link = `${host}/auth/resetPass?token=${token}&name=${name}`;
-    const html = activeMailTpl(who, link);
+    const html = activeMailTpl(name, link);
     sendMail.call(this, {
         from,
         to,
@@ -60,9 +59,9 @@ exports.sendResetPassMail = function (who, token, name) {
     const { email, host } = this.app.config;
     const from = `${email.name} < ${email.from} >`;
     const to = who;
-    const subject = `${email.name} 账号激活`;
+    const subject = `${email.name} 忘记密码`;
     const link = `${host}/auth/resetPass?token=${token}&name=${name}`;
-    const html = resetPassMailTpl(who, link);
+    const html = resetPassMailTpl(name, link);
     sendMail.call(this, {
         from,
         to,

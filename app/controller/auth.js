@@ -8,10 +8,7 @@ module.exports = app => {
             const result = await ctx.service.auth.register(body);
             console.log(result, 'called');
             ctx.body = {
-                code: 0,
-                data: {
-                    msg: 'success'
-                }
+                code: 0
             };
         }
 
