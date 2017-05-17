@@ -8,8 +8,10 @@ const { sendActiveMail, sendResetPassMail } = require('../lib/mail');
 exports.sendActiveMail = async (ctx, next) => {
     const { email, name, password } = ctx.state.user;
     const { signToken } = ctx.app.auth;
+    const hashPass = await ctx.app.auth.encrypt(password);
+    ctx.state.user.password = hashPass;
     const { auth: { session: { secrets } } } = ctx.app.config;
-    const token = signToken(email + password + secrets);
+    const token = signToken(email + hashPass + secrets);
     sendActiveMail.call(ctx, email, token, name);
     await next();
 };

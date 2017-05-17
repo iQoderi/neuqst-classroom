@@ -41,7 +41,7 @@ module.exports = appInfo => {
             app: true,
             agent: false,
         },
-        host: 'http://localhost:7001'
+        host: 'http://192.168.1.116:7001'
     };
 
     return config;

@@ -9,13 +9,15 @@ module.exports = app => {
 
         async register(user) {
             const result = await this.app.mysql.insert('user', user);
-            return result;
+            const insertSuccess = result.affectedRows === 1;
+            return insertSuccess;
         }
 
         async login(query) {
             const result = await this.app.mysql.select('user', query);
             return result;
         }
+
     }
 
     return AuthService;

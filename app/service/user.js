@@ -6,7 +6,7 @@ module.exports = app => {
     class UserService extends app.Service {
 
         async findUserByMail(email) {
-            const result = await this.app.select('user', { email });
+            const result = await this.app.mysql.get('user', { email });
             return result;
         }
 
@@ -22,5 +22,17 @@ module.exports = app => {
 
             return result;
         }
+
+        async activeUser(uid) {
+            const row = {
+                id: uid,
+                isActive: 1,
+            };
+            const result = await this.app.mysql.update('user', row);
+
+            return result;
+        }
     }
+
+    return UserService;
 };

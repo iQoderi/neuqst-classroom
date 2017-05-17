@@ -39,7 +39,7 @@ exports.sendActiveMail =function(who, token, name) {
     const from = `${email.name}< ${email.from} >`;
     const to = who;
     const subject = `${email.name} 账号激活`;
-    const link = `${host}/auth/resetPass?token=${token}&name=${name}`;
+    const link = `${host}/auth/active?access_token=${token}&name=${name}&email=${to}`;
     const html = activeMailTpl(name, link);
     sendMail.call(this, {
         from,
@@ -60,7 +60,7 @@ exports.sendResetPassMail = function (who, token, name) {
     const from = `${email.name} < ${email.from} >`;
     const to = who;
     const subject = `${email.name} 忘记密码`;
-    const link = `${host}/auth/resetPass?token=${token}&name=${name}`;
+    const link = `${host}/auth/resetPass?access_token=${token}&name=${name}&email=${to}`;
     const html = resetPassMailTpl(name, link);
     sendMail.call(this, {
         from,
