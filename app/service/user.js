@@ -1,7 +1,5 @@
 "use strict";
 
-const uuid = require('uuid');
-
 module.exports = app => {
     class UserService extends app.Service {
 
@@ -10,17 +8,15 @@ module.exports = app => {
             return result;
         }
 
-        async setUserRetrieve(uid) {
-            const retrieveKey  = uuid.v4();
-            const retrieveTime = new Date().getTime();
+        async setUserRetrieveKey(uid, key) {
+            const retrieveKey  = key;
             const row = {
                 id: uid,
                 retrieveKey,
-                retrieveTime,
             };
             const result = await this.app.mysql.update('user', row);
 
-            return result;
+            return  result.affectedRows === 1;
         }
 
         async activeUser(uid) {

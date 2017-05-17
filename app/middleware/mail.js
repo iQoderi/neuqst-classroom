@@ -20,6 +20,10 @@ exports.sendActiveMail = async (ctx, next) => {
  */
 exports.sendResetPassMail = async (ctx, next) => {
     const { email } = ctx.request.body;
-    const result = ctx.service.user.findUserByMail(email);
-    console.log(email, 'email');
+    const { name } = ctx.state.user;
+    const { auth: { session: { secrets } } } = ctx.app.config;
+    const token = ctx.app.auth.signToken(email + secrets, '2h');
+    ctx.state.user.key = token;
+    sendResetPassMail.call(ctx, email, token, name);
+    await next();
 };

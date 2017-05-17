@@ -95,7 +95,7 @@ module.exports = app => {
                     code: 10012,
                 };
             } else {
-                const { email, name, password } = ctx.state.user;
+                const { email, name } = ctx.state.user;
                 const { signToken } = ctx.app.auth;
                 const { auth: { session: { secrets } } } = ctx.app.config;
                 const token = signToken(email + secrets, '2h');
@@ -107,7 +107,17 @@ module.exports = app => {
         }
 
         async forgetPass(ctx) {
-            ctx.body = 'forgetPass';
+            const { id, key } = ctx.state.user;
+            const isSuccess = ctx.service.user.setUserRetrieveKey(id, key);
+            if (isSuccess) {
+                ctx.body = {
+                    code: 0,
+                };
+            } else {
+                ctx.body = {
+                    code: 10013,
+                };
+            }
         }
 
         async updatePass(ctx) {
