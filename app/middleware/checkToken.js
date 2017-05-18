@@ -26,8 +26,18 @@ module.exports = app => {
                     code: 10005,
                 };
             }
-
-            ctx.state.user = user;
+            const { name, email, role, college, major, code, isActive } = user;
+            const ret = {
+                name,
+                email,
+                role,
+                college,
+                major,
+                class: user.class,
+                code,
+                isActive,
+            };
+            ctx.state.user = ret;
             await next();
         }
     ]);
