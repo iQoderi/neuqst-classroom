@@ -7,7 +7,9 @@ module.exports = app => {
         }
 
         async error(ctx) {
+            const { originUrl } = ctx.app.config;
             await ctx.render('errorPage', {
+                originUrl,
                 pageTitle: '我是错误头',
                 pageMsg: '我是错误体,我是错误体,我是错误体',
             });
