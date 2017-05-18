@@ -2,16 +2,18 @@
 
 module.exports = app => {
     class UserController extends app.Controller {
-        async info(cxt) {
-            cxt.body = 'user info';
+        async info(ctx) {
+            // console.log(ctx.state.user);
+
+            ctx.body = 'user info';
         }
 
-        async apply(cxt) {
-            cxt.body = 'user apply';
+        async apply(ctx) {
+            ctx.body = 'user apply';
         }
 
-        async applys(cxt) {
-            cxt.body = 'user applys';
+        async applys(ctx) {
+            ctx.body = 'user applys';
         }
 
     }

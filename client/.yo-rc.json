@@ -1,0 +1,9 @@
+{
+  "generator-react-webpack": {
+    "appName": "client",
+    "style": "less",
+    "cssmodules": true,
+    "postcss": true,
+    "generatedWithVersion": 4
+  }
+}

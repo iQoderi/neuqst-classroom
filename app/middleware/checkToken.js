@@ -9,12 +9,12 @@ module.exports = app => {
             const { _id, exp } = ctx.state.user;
             const accessToken = ctx.request.headers.access_token || ctx.request.query.access_token;
             const now =Date.now();
-            if (now >= exp * 1000) {
+            if (!_id || now >= exp * 1000) {
                return ctx.body = {
                     code: 10005,
                 };
             }
-            const user = ctx.service.user.findUserById(_id);
+            const user =await ctx.service.user.findUserById(_id);
             if (!user) {
                 return ctx.body = {
                     code: 10005,
