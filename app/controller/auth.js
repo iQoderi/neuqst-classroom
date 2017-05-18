@@ -25,40 +25,28 @@ module.exports = app => {
             const { _id, exp } = ctx.state.user;
             const now = Date.now();
             if (now >= exp * 1000) {
-                return ctx.body = {
-                    code: 10005
-                };
+                return await ctx.errorPage('token过期', 'token过期或者不合法(10005)');
             }
 
             const user = await ctx.service.user.findUserByMail(email);
             if (!user) {
-                return ctx.body = {
-                    code: 10001,
-                };
+                return await ctx.errorPage('用户不存在', '用户不存在(10001)');
             }
             if (user.isActive === 1) {
-                return ctx.body = {
-                    code: 10006,
-                };
+                return await ctx.errorPage('用户已激活', '用户账户已经激活(10006)');
             }
             const { email: savedEmail, id } = user;
             const { secrets } = ctx.app.config.auth.session;
             console.log(_id, '_id');
             console.log(user, 'user');
             if (_id !== savedEmail + secrets ) {
-                return ctx.body = {
-                    code: 10007,
-                }
+                return await ctx.errorPage('信息有误', '用户激活信息有误(10007)');
             }
             const result = await ctx.service.user.activeUser(id);
             if (result.changedRows === 1) {
-             return ctx.body = {
-                    code: 0,
-                }
+             return ctx.redirct('/resetPassItem')
             }
-            ctx.body = {
-                code: 10008,
-            }
+            return await ctx.errorPage('激活失败', '用户账户激活失败(10008)');
         }
 
         async login(ctx) {
@@ -122,7 +110,7 @@ module.exports = app => {
         }
 
         async resetPass(ctx) {
-            const { _id, exp } = ctx.state.user;
+            const { exp } = ctx.state.user;
             const { query: { access_token, email }, body: { password } } = ctx.request;
             const now = Date.now();
             if (now > exp * 1000) {

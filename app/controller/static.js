@@ -20,7 +20,7 @@ module.exports = app => {
             const { query } = ctx.request;
             await ctx.render('pageItem', Object.assign({
                 pageTitle: '返回登录页面',
-                link: `${originUrl}auth/login`,
+                link: `${originUrl}/auth/login`,
             }, query));
         }
 

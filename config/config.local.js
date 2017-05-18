@@ -11,7 +11,7 @@ module.exports = appInfo => {
                 host:'127.0.0.1',
                 port: 3306,
                 user: 'root',
-                password: '1253110928',
+                password: 'Qoder5143209',
                 database: 'neuqst-classroom',
             },
             app: true,
@@ -42,8 +42,13 @@ module.exports = appInfo => {
             app: true,
             agent: false,
         },
-        host: `http://neuqst.dev.com/api/${this.version}/`,
-        originUrl: 'http://neuqst.dev.com/'
+        host: `http://www.dev.com/api/v1`,
+        originUrl: 'http://www.dev.com',
+        apiUrl: {
+            resUrlPrefix: `http://s0.dev.com/static/v1`,
+            appUrlPrefix: `http://www.dev.com/api/v1`,
+            picUrlPrefix: `http://pic.dev.com/image/v1`
+        },
     };
 
     return config;
