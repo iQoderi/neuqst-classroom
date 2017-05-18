@@ -11,7 +11,7 @@ module.exports = appInfo => {
                 host:'127.0.0.1',
                 port: 3306,
                 user: 'root',
-                password: 'Qoder5143209',
+                password: '1253110928',
                 database: 'neuqst-classroom',
             },
             app: true,
