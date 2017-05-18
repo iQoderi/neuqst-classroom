@@ -5,7 +5,7 @@ module.exports = appInfo => {
     view: {
         defaultViewEngine: 'nunjucks',
         mapping: {
-          '.tpl': 'nunjucks'
+          '.html': 'nunjucks'
         },
     },
     keys: appInfo.name + '_1494245470526_4357',
