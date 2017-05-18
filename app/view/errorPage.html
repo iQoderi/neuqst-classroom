@@ -3,15 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="public/css/errorPage.css">
 </head>
 <body>
-errorfafefdada
-<h1>
-    {{pageTitle}}
-</h1>
+<!--<div class="error">
+    <div class="header">
+        {{pageTitle}}
+    </div>
+    <div class="error-main">
+        <div class="notice-msg">
+            {{pageMsg}}
+        </div>
+    </div>
+</div>-->
 
-<div>
-    {{pageMsg}}
-</div>
+    <div class="card">
+        <div class="left">
+            <img src="public/imgs/error.png">
+        </div>
+        <div class="right">
+            <div class="title">
+                <p>诶呀！！{{pageTitle}}</p>
+            </div>
+            <div class="content">这里是报错信息:<br/>{{pageMsg}}
+            </div>
+        </div>
+        <a href="{{originUrl}}">回首页</a>
+    </div>
 </body>
 </html>
