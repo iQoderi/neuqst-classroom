@@ -9,10 +9,7 @@ module.exports = app => {
         }
 
         async findUserById(uid) {
-            const result = await this.app.mysql.get('user', {
-                where: { id: uid },
-                columns: ['']
-            });
+            const result = await this.app.mysql.get('user', { id: uid });
             return result;
         }
 

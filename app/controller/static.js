@@ -7,7 +7,9 @@ module.exports = app => {
         }
 
         async error(ctx) {
+            const { originUrl } = ctx.app.config;
             await ctx.render('errorPage', {
+                originUrl,
                 pageTitle: '我是错误头',
                 pageMsg: '我是错误体,我是错误体,我是错误体',
             });
@@ -17,7 +19,7 @@ module.exports = app => {
             const { originUrl } = ctx.app.config;
             const { query } = ctx.request;
             await ctx.render('pageItem', Object.assign({
-                pageTitle: '我是跳转头',
+                pageTitle: '返回登录页面',
                 link: `${originUrl}auth/login`,
             }, query));
         }
@@ -26,7 +28,7 @@ module.exports = app => {
             const { originUrl }= ctx.app.config;
             const { query } = ctx.request;
             await ctx.render('pageItem', Object.assign({
-                pageTitle: '我是跳转头',
+                pageTitle: '返回重置密码页面',
                 link: `${originUrl}/auth/resetPass`,
             }, query));
         }

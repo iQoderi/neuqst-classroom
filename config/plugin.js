@@ -21,6 +21,7 @@ const plugins = {
         enable: true,
         package: 'egg-view-nunjucks',
     },
+    static: true,
 };
 
 module.exports = plugins;

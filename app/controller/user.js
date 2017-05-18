@@ -3,9 +3,12 @@
 module.exports = app => {
     class UserController extends app.Controller {
         async info(ctx) {
-            // console.log(ctx.state.user);
-
-            ctx.body = 'user info';
+            ctx.body = {
+                code: 0,
+                data: {
+                    user: ctx.state.user,
+                }
+            };
         }
 
         async apply(ctx) {
