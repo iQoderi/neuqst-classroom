@@ -37,14 +37,13 @@ module.exports = app => {
             }
             const { email: savedEmail, id } = user;
             const { secrets } = ctx.app.config.auth.session;
-            console.log(_id, '_id');
-            console.log(user, 'user');
+            const { host } = ctx.app.config;
             if (_id !== savedEmail + secrets ) {
                 return await ctx.errorPage('信息有误', '用户激活信息有误(10007)');
             }
             const result = await ctx.service.user.activeUser(id);
             if (result.changedRows === 1) {
-             return ctx.redirct('/resetPassItem')
+                return ctx.redirect(`${host}/resetPassItem`);
             }
             return await ctx.errorPage('激活失败', '用户账户激活失败(10008)');
         }
