@@ -17,6 +17,10 @@ body{
     overflow: hidden;
     box-shadow:0 0 10px #dddddd;
 }
+
+.wrapper{
+    overflow: hidden;
+}
 .card .left{
     float: left;
     width: 300px;
@@ -48,13 +52,15 @@ body{
     font-size: 20px;
     line-height: 60px;
 }
-.card  button{
-
+.card  a{
     display: block;
     color: #ffffff;
     font-size: 18px;
     width: 100px;
     height:50px;
+    line-height: 50px;
+    text-decoration: none;
+    text-align: center;
     outline: none;
     border: none;
     background: rgba(209, 39, 55, 0.79);
