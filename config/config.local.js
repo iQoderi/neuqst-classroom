@@ -41,7 +41,7 @@ module.exports = appInfo => {
             app: true,
             agent: false,
         },
-        host: 'http://192.168.1.116:7001'
+        host: 'http://neuqst.qoder.com/api/v1/'
     };
 
     return config;
