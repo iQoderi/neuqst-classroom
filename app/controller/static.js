@@ -17,7 +17,7 @@ module.exports = app => {
             const { originUrl } = ctx.app.config;
             const { query } = ctx.request;
             await ctx.render('pageItem', Object.assign({
-                pageTitle: '我是跳转头',
+                pageTitle: '返回登录页面',
                 link: `${originUrl}auth/login`,
             }, query));
         }
@@ -26,7 +26,7 @@ module.exports = app => {
             const { originUrl }= ctx.app.config;
             const { query } = ctx.request;
             await ctx.render('pageItem', Object.assign({
-                pageTitle: '我是跳转头',
+                pageTitle: '返回重置密码页面',
                 link: `${originUrl}/auth/resetPass`,
             }, query));
         }
