@@ -2,6 +2,7 @@
 
 module.exports = appInfo => {
     const config = {
+        version: 'v1',
         security: {
             csrf: false,
         },
@@ -41,7 +42,8 @@ module.exports = appInfo => {
             app: true,
             agent: false,
         },
-        host: 'http://neuqst.dev.com/api/v1/'
+        host: `http://neuqst.dev.com/api/${this.version}/`,
+        originUrl: 'http://neuqst.dev.com/'
     };
 
     return config;

@@ -44,7 +44,7 @@ npm manifest:
       "node": ">=6.0.0"
     },
     "scripts": {
-      "start": "node index.js",
+      "start": "node static.js",
       "dev": "egg-bin dev",
       "test": "npm run lint -- --fix && npm run test-local",
       "test-local": "egg-bin test",
