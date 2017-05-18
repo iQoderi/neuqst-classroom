@@ -2,9 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="public/css/pageItem.css"/>
 </head>
 <body>
-pageItem
+<div class="content">
+    <div class="top">
+        <img src="public/images/img.jpg"/>
+    </div>
+    <div class="middle">
+        <div class="user">
+            <h2>Hi</h2>
+            <span>{{ email }}</span>
+        </div>
+        <div class="link">
+            <span>验证通过:<span id="time" style="display: inline">5</span>秒后返回{{ pageTitle }},若不能返回,点击下方链接直接返回</span>
+            <div><p><a id="goBack" href="#javascript">{{ pageTitle }}</a></p></div>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        var count= 5;
+        var url = "{{ link }}" + '?access_token=' + "{{access_token}}" + '?email=' + "{{email}}";
+        var time = document.getElementById('time');
+        var timer = setInterval(function(){
+            time.innerText = count--;
+            if (count === 0) {
+                clearInterval(timer);
+                window.location = url;
+            }
+        }, 1000);
+        var goBack = document.getElementById('goBack');
+        goBack.onclick = function () {
+            clearInterval(timer);
+            window.location = url;
+        }
+    };
+</script>
 </body>
 </html>
