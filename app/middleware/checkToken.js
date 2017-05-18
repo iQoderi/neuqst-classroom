@@ -26,7 +26,6 @@ module.exports = app => {
                     code: 10005,
                 };
             }
-
             const { name, email, role, college, major, code, isActive } = user;
             const ret = {
                 name,
