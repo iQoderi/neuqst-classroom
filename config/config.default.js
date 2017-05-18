@@ -8,6 +8,7 @@ module.exports = appInfo => {
           '.html': 'nunjucks'
         },
     },
+    middleware: ['errorPage'],
     keys: appInfo.name + '_1494245470526_4357',
   };
 
