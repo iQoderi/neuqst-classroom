@@ -16,7 +16,11 @@ const plugins = {
     auth: {
         enable: true,
         package: 'egg-auth',
-    }
+    },
+    nunjucks: {
+        enable: true,
+        package: 'egg-view-nunjucks',
+    },
 };
 
 module.exports = plugins;

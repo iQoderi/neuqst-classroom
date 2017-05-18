@@ -1,10 +1,16 @@
 'use strict';
 
 module.exports = appInfo => {
-  const config = {};
+  const config = {
+    view: {
+        defaultViewEngine: 'nunjucks',
+        mapping: {
+          '.tpl': 'nunjucks'
+        },
+    },
+    keys: appInfo.name + '_1494245470526_4357',
+  };
 
-  // should change to your own
-  config.keys = appInfo.name + '_1494245470526_4357';
   return config;
 };
 
