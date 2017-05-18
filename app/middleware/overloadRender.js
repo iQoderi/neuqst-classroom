@@ -5,7 +5,7 @@ const url = require('../lib/url');
 module.exports = () => {
     return async (ctx, next) => {
         ctx._render = ctx.render;
-        const neuqstUrl = url.call(this.app);
+        const neuqstUrl = url.call(ctx.app);
         ctx.render = (templatePath, data) => {
             if (data === undefined) {
                 data = {};
@@ -15,7 +15,7 @@ module.exports = () => {
                 neuqstUrl,
             });
 
-            return ctx.render(templatePath, data);
+            return ctx._render(templatePath, data);
         };
 
         await next();

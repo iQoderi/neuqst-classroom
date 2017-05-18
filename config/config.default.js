@@ -10,7 +10,7 @@ module.exports = appInfo => {
             '.html': 'nunjucks'
           },
       },
-      middleware: ['errorPage'],
+      middleware: ['errorPage', 'overloadRender'],
       static: {
           prefix: '/public/',
           dir: path.join(appInfo.baseDir, 'app/public'),
