@@ -4,6 +4,7 @@ module.exports = () => {
         try {
             await next();
         } catch (err) {
+            console.log(err);
             ctx.app.emit('error', err, ctx);
             ctx.logger.error('error', err);
             const { name, message } = err;

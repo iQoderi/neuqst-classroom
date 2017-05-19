@@ -47,6 +47,7 @@ module.exports = appInfo => {
             sk: 'F0xhJzVnCJSePA41IMDG7t8bmggSA6AlVdvosOfJ',
             prefix: 'neuqst-classroom',
             bucket: 'neuqst',
+            endPoint: 'http://odljp7x9v.bkt.clouddn.com'
         },
         host: `http://www.dev.com/api/v1`,
         originUrl: 'http://www.dev.com',
