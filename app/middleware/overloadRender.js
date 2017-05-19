@@ -1,11 +1,10 @@
 "use strict";
 
-const url = require('../lib/url');
 
 module.exports = () => {
     return async (ctx, next) => {
         ctx._render = ctx.render;
-        const neuqstUrl = url.call(ctx.app);
+        const neuqstUrl = ctx.helper.url();
         ctx.render = (templatePath, data) => {
             if (data === undefined) {
                 data = {};

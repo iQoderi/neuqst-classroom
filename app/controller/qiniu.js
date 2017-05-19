@@ -1,6 +1,5 @@
 "use strict";
 
-const Qiniu = require('../lib/qiniu');
 const uuid = require('uuid');
 
 module.exports = app => {
@@ -8,7 +7,7 @@ module.exports = app => {
         async upload(ctx) {
             const stream = await ctx.getFileStream();
             const buf = stream.read(10240);
-            const qiniu = new Qiniu(ctx.app.config.qiniu);
+            const qiniu = new (app.qiniu())();
             const { endPoint } = ctx.app.config.qiniu;
             const key = uuid.v4() + stream.filename;
             const result = await qiniu.uploadFile(key, buf);
