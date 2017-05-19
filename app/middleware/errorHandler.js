@@ -5,8 +5,9 @@ module.exports = () => {
             await next();
         } catch (err) {
             ctx.app.emit('error', err, ctx);
+            ctx.logger.error('error', err);
             const { name, message } = err;
-            const serverPrefixPath = ['/auth/resetPass'];
+            const serverPrefixPath = ['/auth/resetPass', '/auth/active'];
             const { method, path } = ctx.request;
             let code;
             if (name === 'JsonWebTokenError') {

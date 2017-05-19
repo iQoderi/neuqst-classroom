@@ -21,7 +21,8 @@ module.exports = app => {
         }
 
         async activeAccount(ctx) {
-            const { email } = ctx.request.query;
+            const { query = {}} = ctx.request;
+            const { email } = query;
             const { _id, exp } = ctx.state.user;
             const now = Date.now();
             if (now >= exp * 1000) {
@@ -37,13 +38,16 @@ module.exports = app => {
             }
             const { email: savedEmail, id } = user;
             const { secrets } = ctx.app.config.auth.session;
-            const { host } = ctx.app.config;
+            const { originUrl } = ctx.app.config;
             if (_id !== savedEmail + secrets ) {
                 return await ctx.errorPage('信息有误', '用户激活信息有误(10007)');
             }
             const result = await ctx.service.user.activeUser(id);
-            if (result.changedRows === 1) {
-                return ctx.redirect(`${host}/resetPassItem`);
+            if (result.rowsAffected === 1) {
+               return await ctx.render('pageItem', Object.assign({
+                    pageTitle: '返回登录页面',
+                    link: `${originUrl}/auth/login`,
+               }, query));
             }
             return await ctx.errorPage('激活失败', '用户账户激活失败(10008)');
         }
