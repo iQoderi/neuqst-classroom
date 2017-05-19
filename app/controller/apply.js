@@ -11,7 +11,7 @@ module.exports = app => {
         }
 
         async show(cxt) {
-            ctx.body = 'detail';
+
         }
 
         async destroy(cxt) {
