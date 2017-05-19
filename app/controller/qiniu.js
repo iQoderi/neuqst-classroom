@@ -10,7 +10,6 @@ module.exports = app => {
             const key = 'test32.js';
             const filePath = path.join(__dirname, './auth.js');
             const result = await qiniu.uploadFile(key, filePath);
-
             ctx.body = {
                 code: 0,
             }

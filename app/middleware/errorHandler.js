@@ -20,6 +20,13 @@ module.exports = () => {
                 return await ctx.errorPage(name, message);
             }
 
+            if (code === -1) {
+                return ctx.body = {
+                    code,
+                    message,
+                }
+            }
+
             return ctx.body = {
                 code,
             };
