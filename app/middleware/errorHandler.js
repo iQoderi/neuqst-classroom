@@ -1,13 +1,26 @@
 "use strict";
 module.exports = () => {
-    return async function errorHandler(next) {
+    return async function errorHandler(ctx, next) {
         try {
-            next();
-        } catch (e) {
-            this.app.emit('error', err, this);
-            this.body = {
-                success: false,
-                message: this.app.config.env === 'prod' ? 'Internal Server Error' : err.message,
+            await next();
+        } catch (err) {
+            ctx.app.emit('error', err, ctx);
+            const { name, message } = err;
+            const serverPrefixPath = ['/auth/resetPass'];
+            const { method, path } = ctx.request;
+            let code;
+            if (name === 'JsonWebTokenError') {
+                code = 10005;
+            } else {
+                code = -1;
+            }
+
+            if (method === 'GET' && serverPrefixPath.indexOf(path) !== -1) {
+                return await ctx.errorPage(name, message);
+            }
+
+            return ctx.body = {
+                code,
             };
         }
     }

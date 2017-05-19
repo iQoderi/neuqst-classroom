@@ -108,6 +108,25 @@ module.exports = app => {
             }
         }
 
+        async resetPassItem(ctx) {
+            const { originUrl }= ctx.app.config;
+            const { exp } = ctx.state.user;
+            const { query = {} } = ctx.request;
+            const { access_token, email } = query;
+            const now = Date.now();
+            if (now > exp * 1000) {
+                return ctx.errorPage('链接失效', '修改密码链接已经失效(10005)');
+            }
+            const user = await ctx.service.user.findUserByMailAndKey(email, access_token);
+            if (!user) {
+                return ctx.errorPage('链接失效', '修改密码链接失效或者不合法(10005)');
+            }
+            await ctx.render('pageItem', Object.assign({
+                pageTitle: '返回重置密码页面',
+                link: `${originUrl}/auth/resetPass`,
+            }, query));
+        }
+
         async resetPass(ctx) {
             const { exp } = ctx.state.user;
             const { query: { access_token, email }, body: { password } } = ctx.request;
