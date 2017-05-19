@@ -42,6 +42,12 @@ module.exports = appInfo => {
             app: true,
             agent: false,
         },
+        qiniu: {
+            ak: 'aqU04gUOGu9yMX6R6KS33rDLSlrrxoa4XKByqAaw',
+            sk: 'g3br-F3D53huzCVD4jkFhkID0HZaX3MJjiSqkF58',
+            prefix: 'neuqst-classroom-',
+            buckets: [{}]
+        },
         host: `http://www.dev.com/api/v1`,
         originUrl: 'http://www.dev.com',
         apiUrl: {

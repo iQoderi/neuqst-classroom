@@ -21,6 +21,10 @@ const plugins = {
         enable: true,
         package: 'egg-view-nunjucks',
     },
+    qiniu: {
+        enable: true,
+        package: 'egg-qiniu',
+    },
     static: true,
 };
 
