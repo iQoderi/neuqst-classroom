@@ -43,10 +43,10 @@ module.exports = appInfo => {
             agent: false,
         },
         qiniu: {
-            ak: 'aqU04gUOGu9yMX6R6KS33rDLSlrrxoa4XKByqAaw',
-            sk: 'g3br-F3D53huzCVD4jkFhkID0HZaX3MJjiSqkF58',
-            prefix: 'neuqst-classroom-',
-            buckets: [{}]
+            ak: '6dq3o_p6-n0nh3-StBsjiS7b0SP6us7aJrTrtMZV',
+            sk: 'F0xhJzVnCJSePA41IMDG7t8bmggSA6AlVdvosOfJ',
+            prefix: 'neuqst-classroom',
+            bucket: 'neuqst',
         },
         host: `http://www.dev.com/api/v1`,
         originUrl: 'http://www.dev.com',
