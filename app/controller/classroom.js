@@ -51,7 +51,19 @@ module.exports = app => {
         }
 
         async update(ctx) {
-            ctx.body = 'update';
+            const { body = {} } = ctx.request;
+            const { id } = ctx.params;
+            const row = Object.assign(body, { id });
+            const isSuccess = await ctx.service.classroom.update(row);
+            if (isSuccess) {
+                ctx.body = {
+                    code: 0,
+                }
+            } else {
+                ctx.body = {
+                    code: 20002,
+                }
+            }
         }
     }
 
