@@ -37,7 +37,17 @@ module.exports = app => {
         }
 
         async destroy(ctx) {
-            ctx.body = 'delete';
+            const { id } = ctx.params;
+            const isSuccess = await ctx.service.classroom.remove(id);
+            if (isSuccess) {
+                ctx.body = {
+                    code: 0,
+                };
+            } else {
+                ctx.body = {
+                    code: 20002,
+                }
+            }
         }
 
         async update(ctx) {
