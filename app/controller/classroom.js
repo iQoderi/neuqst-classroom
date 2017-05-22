@@ -12,7 +12,17 @@ module.exports = app => {
         }
 
         async create(ctx) {
-            ctx.body = 'create';
+            const { body } = ctx.request;
+            const isSuccess = ctx.service.classroom.create(body);
+            if (isSuccess) {
+                return ctx.body = {
+                    code: 0,
+                }
+            } else {
+                return ctx.body = {
+                    code: 20001,
+                }
+            }
         }
 
         async show(ctx) {
