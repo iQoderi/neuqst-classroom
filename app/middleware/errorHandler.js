@@ -4,7 +4,6 @@ module.exports = () => {
         try {
             await next();
         } catch (err) {
-            console.log(err);
             ctx.app.emit('error', err, ctx);
             ctx.logger.error('error', err);
             const { name, message } = err;
@@ -15,6 +14,10 @@ module.exports = () => {
                 code = 10005;
             } else {
                 code = -1;
+            }
+
+            if (name === 'ForbiddenError') {
+                return await ctx.errorPage(name, message);
             }
 
             if (method === 'GET' && serverPrefixPath.indexOf(path) !== -1) {
