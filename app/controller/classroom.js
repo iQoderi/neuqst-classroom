@@ -3,6 +3,7 @@ module.exports = app => {
     class ClassController extends app.Controller {
         async index(ctx) {
             const classrooms = await ctx.service.classroom.list();
+            console.log('classrooms', classrooms);
             ctx.body = {
                 code: 0,
                 data: {

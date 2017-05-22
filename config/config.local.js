@@ -41,6 +41,7 @@ module.exports = appInfo => {
             },
             app: true,
             agent: false,
+            userRoles: [1, 2, 3, 4],
         },
         qiniu: {
             ak: '6dq3o_p6-n0nh3-StBsjiS7b0SP6us7aJrTrtMZV',
