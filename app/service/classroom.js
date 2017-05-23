@@ -19,7 +19,6 @@ module.exports = app => {
 
         async create(row) {
             const result = await this.app.mysql.insert('classroom', row);
-            console.log(result, 'ret');
             return result.affectedRows === 1;
         }
 

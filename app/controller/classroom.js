@@ -14,7 +14,7 @@ module.exports = app => {
 
         async create(ctx) {
             const { body } = ctx.request;
-            const isSuccess = ctx.service.classroom.create(body);
+            const isSuccess = await ctx.service.classroom.create(body);
             if (isSuccess) {
                 return ctx.body = {
                     code: 0,
