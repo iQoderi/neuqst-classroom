@@ -3,7 +3,13 @@
 module.exports = app => {
     class AdminController extends app.Controller {
         async index (ctx) {
-            ctx.body = 'get admin';
+            const admin = await ctx.service.admin.list();
+            ctx.body = {
+                code: 0,
+                data: {
+                    admin,
+                }
+            }
         }
 
         async create (ctx) {
