@@ -10,6 +10,16 @@ module.exports = app => {
             return result;
         }
 
+        async create(admin) {
+
+        }
+
+        async remove (id) {
+            const result = await this.app.mysql.delete('user', { id });
+            return result.affectedRows === 1
+        }
+
+
         async detail(id) {
             const query = {
                 id,

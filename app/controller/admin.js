@@ -17,7 +17,16 @@ module.exports = app => {
         }
 
         async destroy (ctx) {
-            ctx.body = 'destroy admin';
+            const { id } = ctx.params;
+            const isSuccess = await ctx.service.admin.remove(id);
+            if (isSuccess) {
+                return ctx.body = {
+                    code: 0,
+                };
+            }
+            ctx.body = {
+                code: 30001
+            }
         }
 
         async update (ctx) {
