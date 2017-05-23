@@ -18,6 +18,12 @@ module.exports = app => {
 
         async destroy (ctx) {
             const { id } = ctx.params;
+            const { id:uid } = ctx.state.user;
+            if (parseInt(id) === parseInt(uid)) {
+                return ctx.body = {
+                    code: 30002,
+                }
+            }
             const isSuccess = await ctx.service.admin.remove(id);
             if (isSuccess) {
                 return ctx.body = {
