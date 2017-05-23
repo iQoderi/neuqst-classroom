@@ -44,11 +44,13 @@ module.exports = app => {
             return result;
         }
 
-        async updatePass(uid, password) {
+        async resetPass(uid, password) {
             const row = {
                 id: uid,
                 password,
             };
+
+            console.log(row, 'row');
             const result = await this.app.mysql.update('user', row);
             return result.affectedRows === 1;
         }

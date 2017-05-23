@@ -2,7 +2,7 @@
 
 const compose = require('koa-compose');
 
-module.exports = app => {
+module.exports = (app, flag = 0) => {
     return compose([
         app.auth.decodedToken,
         async (ctx, next) => {
@@ -26,8 +26,9 @@ module.exports = app => {
                     code: 10005,
                 };
             }
-            const { name, email, role, college, major, code, isActive } = user;
+            const { id, name, email, role, college, major, code, isActive, password } = user;
             const ret = {
+                id,
                 name,
                 email,
                 role,
@@ -37,6 +38,9 @@ module.exports = app => {
                 code,
                 isActive,
             };
+            if (flag === 1) {
+                ret.password = password;
+            }
             ctx.state.user = ret;
             await next();
         }

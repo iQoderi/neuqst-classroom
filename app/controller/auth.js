@@ -55,17 +55,12 @@ module.exports = app => {
         async login(ctx) {
             const { password } = ctx.request.body;
             const { user } = ctx.state;
-            const { password:hashPass, isActive } = user;
+            const { password:hashPass } = user;
             const { validate } = ctx.app.auth;
             const isSame = await validate(password, hashPass);
             if (!isSame) {
                 return ctx.body = {
                   code: 10011,
-                };
-            }
-            if (isActive !== 1) {
-                return ctx.body = {
-                    code: 10010,
                 };
             }
 
@@ -147,7 +142,7 @@ module.exports = app => {
                 }
             }
             const hashPass = await ctx.app.auth.encrypt(password);
-            const isSuccess = await ctx.service.user.updatePass(user.id, hashPass);
+            const isSuccess = await ctx.service.user.resetPass(user.id, hashPass);
             if (isSuccess) {
                 await ctx.service.user.setUserRetrieveKey(user.id, hashPass);
                 return ctx.body = {
@@ -158,10 +153,6 @@ module.exports = app => {
             return ctx.body = {
                 code: 10014,
             }
-        }
-
-        async updatePass(ctx) {
-            ctx.body = 'updatePass';
         }
     }
 

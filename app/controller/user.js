@@ -19,6 +19,29 @@ module.exports = app => {
             ctx.body = 'user applys';
         }
 
+        async updatePass(ctx) {
+            const { oldPass, newPass } = ctx.request.body;
+            const { id, password } = ctx.state.user;
+            const { validate } = ctx.app.auth;
+            const isSame = await validate(oldPass, password);
+            if (!isSame) {
+                return ctx.body = {
+                    code: 10015,
+                };
+            }
+
+            const hashPass = await ctx.app.auth.encrypt(newPass);
+            const isSuccess = await ctx.service.user.resetPass(id, hashPass);
+            if (isSuccess) {
+                return ctx.body = {
+                    code: 0,
+                };
+            }
+
+            ctx.body = {
+                code: 10016,
+            }
+        }
     }
 
     return UserController;

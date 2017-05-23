@@ -27,6 +27,7 @@ module.exports = app => {
 
             return result;
         }
+
     }
 
     return AuthService;
