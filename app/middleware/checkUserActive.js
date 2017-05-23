@@ -1,8 +1,12 @@
 "use strict";
 
-module.exports = opt => {
-    return async (ctx, next) => {
-        const { flag, type = 'email' } = opt;
-        // const {} =
+module.exports = async (ctx, next) => {
+    const { isActive } = ctx.state.user;
+    if (isActive === 1) {
+        return await next();
+    }
+
+    ctx.body = {
+        code: 10010
     }
 };
