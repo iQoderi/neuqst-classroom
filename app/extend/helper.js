@@ -31,5 +31,12 @@ module.exports = {
         } else {
             throw new Error(`unExpected type of rule ${typeof rules}`);
         }
+    },
+    dropField(fields, drops) {
+        drops.forEach((drop) => {
+            if (fields.hasOwnProperty(drop)) {
+                delete  fields[drop];
+            }
+        });
     }
 };

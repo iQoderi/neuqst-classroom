@@ -25,7 +25,14 @@ module.exports = app => {
         }
 
         async show (ctx) {
-            ctx.body = 'admin detail';
+            const { id } = ctx.params;
+            const admin = await ctx.service.admin.detail(id);
+            ctx.body = {
+                code: 0,
+                data: {
+                    admin,
+                }
+            }
         }
     }
 

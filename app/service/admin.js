@@ -16,6 +16,7 @@ module.exports = app => {
                 role: 3,
             };
             const result = await this.app.mysql.get('user', query);
+            this.ctx.helper.dropField(result, ['password', 'token', 'retrieveKey']);
             return result;
         }
     }
