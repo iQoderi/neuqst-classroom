@@ -2,24 +2,37 @@
 
 module.exports = app => {
     class ApplyController extends app.Controller {
-        async index(cxt) {
-            cxt.body = 'get';
+        async index(ctx) {
+            const applys = await ctx.service.apply.list();
+            ctx.body = {
+                code: 0,
+                data: {
+                    applys,
+                }
+            }
         }
 
-        async create(cxt) {
-            cxt.body = 'create';
+        async create(ctx) {
+            ctx.body = 'create';
         }
 
-        async show(cxt) {
-
+        async show(ctx) {
+            const { id } = ctx.params;
+            const apply = await ctx.service.apply.detail(id);
+            ctx.body = {
+                code: 0,
+                data: {
+                    apply,
+                },
+            }
         }
 
-        async destroy(cxt) {
-            cxt.body = 'delete';
+        async destroy(ctx) {
+            ctx.body = 'delete';
         }
 
-        async update(cxt) {
-            cxt.body = 'update';
+        async update(ctx) {
+            ctx.body = 'update';
         }
     }
 

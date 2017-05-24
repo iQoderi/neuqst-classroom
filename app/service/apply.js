@@ -8,7 +8,8 @@ module.exports = app => {
         }
 
         async detail(id) {
-
+            const result = await this.app.mysql.get('apply', { id });
+            return result;
         }
 
         async create(apply) {
