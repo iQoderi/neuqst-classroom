@@ -13,7 +13,22 @@ module.exports = app => {
         }
 
         async create (ctx) {
-            ctx.body = 'create admin';
+            const { body } = ctx.request;
+            const admin = Object.assign(body, {
+                role: 3,
+                isActive: 1,
+                password: await ctx.app.auth.encrypt(body.password),
+            });
+            const isSuccess = await ctx.service.admin.create(admin);
+            if (isSuccess) {
+                return ctx.body = {
+                    code: 0,
+                };
+            }
+
+            ctx.body = {
+                code: 30004,
+            }
         }
 
         async destroy (ctx) {
@@ -36,7 +51,19 @@ module.exports = app => {
         }
 
         async update (ctx) {
-            ctx.body = 'update admin';
+            const { id } = ctx.params;
+            const { body= {} } = ctx.request;
+            const row = Object.assign(body, { id });
+            const isSuccess= await ctx.service.admin.update(row);
+            if (isSuccess) {
+                return ctx.body = {
+                    code: 0,
+                }
+            }
+
+            ctx.body = {
+                code: 30003,
+            }
         }
 
         async show (ctx) {

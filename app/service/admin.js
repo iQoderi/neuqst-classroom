@@ -11,7 +11,8 @@ module.exports = app => {
         }
 
         async create(admin) {
-
+            const result = await this.app.mysql.insert('user', admin);
+            return result.affectedRows === 1
         }
 
         async remove (id) {
@@ -19,6 +20,10 @@ module.exports = app => {
             return result.affectedRows === 1
         }
 
+        async update (row) {
+            const result = await this.app.mysql.update('user', row);
+            return result.affectedRows === 1
+        }
 
         async detail(id) {
             const query = {
