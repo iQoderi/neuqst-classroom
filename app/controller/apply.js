@@ -3,7 +3,8 @@
 module.exports = app => {
     class ApplyController extends app.Controller {
         async index(ctx) {
-            const applys = await ctx.service.apply.list();
+            const { page = 1 , size = 10 } = ctx.query;
+            const applys = await ctx.service.apply.list(page, size);
             ctx.body = {
                 code: 0,
                 data: {

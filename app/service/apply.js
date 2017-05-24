@@ -2,8 +2,11 @@
 
 module.exports = app => {
     class ApplyService extends app.Service {
-        async list() {
-            const result = await this.app.mysql.select('apply');
+        async list(page, size) {
+            const result = await this.app.mysql.select('apply', {
+                limit: size * 1,
+                offset: size * (page - 1),
+            });
             return result;
         }
 
