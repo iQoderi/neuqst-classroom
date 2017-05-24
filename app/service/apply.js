@@ -16,15 +16,18 @@ module.exports = app => {
         }
 
         async create(apply) {
-
+            const result = await this.app.mysql.insert('apply', apply);
+            return result.affectedRows === 1;
         }
 
         async remove(id) {
-
+            const result = await this.app.mysql.delete('apply', { id });
+            return result.affectedRows === 1;
         }
 
         async update(row) {
-
+            const result = await this.app.mysql.update('apply', row);
+            return result.affectedRows === 1;
         }
     }
 
