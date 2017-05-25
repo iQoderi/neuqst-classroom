@@ -26,22 +26,12 @@ module.exports = (app, flag = 0) => {
                     code: 10005,
                 };
             }
-            const { id, name, email, role, college, major, code, isActive, password } = user;
-            const ret = {
-                id,
-                name,
-                email,
-                role,
-                college,
-                major,
-                class: user.class,
-                code,
-                isActive,
-            };
+            const { password } = user;
+            ctx.helper.dropField(user, ['password', 'token', 'retrieveKey']);
             if (flag === 1) {
-                ret.password = password;
+                user.password = password;
             }
-            ctx.state.user = ret;
+            ctx.state.user = user;
             await next();
         }
     ]);
