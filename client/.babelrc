@@ -7,7 +7,8 @@
   "plugins": [
     "transform-decorators-legacy",
     "transform-object-rest-spread",
-    "react-hot-loader/babel"
+    "react-hot-loader/babel",
+    ["import", { "libraryName": "ant", "style": "css"}]
   ],
   "env": {
     "test": {

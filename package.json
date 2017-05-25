@@ -4,7 +4,9 @@
   "description": "东北大学秦皇岛分校数学与统计学院教室管理系统",
   "private": true,
   "dependencies": {
+    "antd": "^2.10.2",
     "async": "^2.4.0",
+    "babel-plugin-import": "^1.2.0",
     "bcrypt": "^1.0.2",
     "bluebird": "^3.5.0",
     "egg": "^1.1.0",
@@ -28,6 +30,8 @@
     "egg-mock": "^3.4.0",
     "eslint": "^3.19.0",
     "eslint-config-egg": "^3.2.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.3",
     "webstorm-disable-index": "^1.1.2"
   },
   "engines": {
