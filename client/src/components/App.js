@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'antd';
 import './app.css';
 
 class AppComponent extends React.Component {
@@ -6,7 +7,7 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div>
-        index
+        <Button>submit</Button>
       </div>
     );
   }
