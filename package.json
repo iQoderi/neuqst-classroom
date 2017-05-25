@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "autod": "^2.8.0",
+    "babel-eslint": "^7.2.3",
     "egg-bin": "^3.3.0",
     "egg-ci": "^1.6.0",
     "egg-mock": "^3.4.0",
