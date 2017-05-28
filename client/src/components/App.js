@@ -1,19 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Button } from 'antd';
-import './app.css';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { LazyRoute } from '../utils';
+import './app.less';
 
-class AppComponent extends React.Component {
+const lazyLoad = moduleName => _ =>
+  import(`./${moduleName}`)
+    .then(module => module.default)
+    .catch(err => console.error(err));
+
+
+class AppComponent extends Component {
 
   render() {
     return (
-      <div>
-        <Button>submit</Button>
-      </div>
+      <Router>
+       <div>
+         <ul>
+           <li>
+             <Link to='/admin'>admin</Link>
+           </li>
+           <li>
+             <Link to='/'>home</Link>
+           </li>
+         </ul>
+         <Route exact path='/'
+                render={(props) => <LazyRoute {...props} component={import('./homepage')}/>}
+         />
+         <Route path='/admin'
+                render={(props) => <LazyRoute {...props} component={import('./admin')}/>}
+         />
+       </div>
+      </Router>
     );
   }
 }
 
-AppComponent.defaultProps = {
-};
 
 export default AppComponent;
