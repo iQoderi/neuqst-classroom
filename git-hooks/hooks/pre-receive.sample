@@ -22,12 +22,3 @@ then
 		i=$((i + 1))
 	done
 fi
-
-unset GIT_DIR
-DeployPath=/Users/qoder/webApplication/neuqst-classroom
-WwwPath=/var/www/neuqst-classroom
-
-git add . -A && git stash
-git pull origin master
-
-npm run dev
